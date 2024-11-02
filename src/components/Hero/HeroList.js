@@ -17,8 +17,7 @@ export const HeroList = ({publisher}) => {
 
         {
         heroes.map(hero=>(
-        
-        <HeroCard {...hero}/> 
+        <HeroCard key={hero.id} {...hero}/> 
         // manera de pasar como poperties un objeto desesctructurado
         ))
         }
