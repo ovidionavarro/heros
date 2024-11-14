@@ -6,6 +6,8 @@ import { LoginScreen } from '../components/login/LoginScreen'
 import { SearchScreen } from '../components/search/SearchScreen'
 import { Navbar } from '../components/ui/Navbar'
 import { DashBoardRoutes } from './DashBoardRoutes'
+import { PrivateRoute } from './PrivateRoute'
+import { PublicRoute } from './PublicRoute'
 
 export const AppRouter = () => {
   return (
@@ -16,8 +18,24 @@ export const AppRouter = () => {
             <Route path='/marvel' element={<MarvelScreen/>}/>
             <Route path='/search' element={<SearchScreen/>}/>
             <Route path='/' element={<MarvelScreen/>}/> */}
-            <Route path='/login' element={<LoginScreen/>}/>
-            <Route path='/*' element={<DashBoardRoutes/>}/>
+            
+            
+            {/* <Route path='/login' element={<LoginScreen/>}/> */}
+            <Route path='/login' element={
+              <PublicRoute>
+                <LoginScreen/>
+              </PublicRoute>
+            }/>
+            
+            
+            <Route path='/*' element={
+              <PrivateRoute>
+                <DashBoardRoutes/>
+              </PrivateRoute>
+            }/>
+
+
+            {/* <Route path='/*' element={<DashBoardRoutes/>}/> */}
 
 
         </Routes>
